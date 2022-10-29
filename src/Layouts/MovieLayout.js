@@ -2,10 +2,11 @@ import { Outlet } from "react-router-dom"
 import MovieSidebar from "../Components /MovieSidebar"
 
 
-const MovieLayout = () => {
+const MovieLayout = (props) => {
+   const movieList = props.movieList
     return (
         <div className="movie-layout">
-<MovieSidebar />
+<MovieSidebar movieList={movieList}/>
 <div className="movie-content">
 <Outlet/>
 </div>
