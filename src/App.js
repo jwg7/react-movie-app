@@ -6,6 +6,8 @@ import HomePage from "./Pages/HomePage";
 import MovieListPage from "./Pages/MovieListPage";
 import MovieLayout from "./Layouts/MovieLayout"
 import { useState } from "react";
+import MoviePage from "./Pages/MoviePage";
+import MovieFormPage from "./Pages/MovieFormPage"
 
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -13,6 +15,13 @@ import { useState } from "react";
 const App = () => {
 
   const [movieList, setMovieList] = useState(sampleMovies)
+
+const handleAddMovie = (title) => {
+const newMovie = {
+  Title: title,
+}
+setMovieList([...movieList, newMovie])
+}
 
 const router = createBrowserRouter([
 
@@ -31,6 +40,14 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <MovieListPage movieList={movieList}/>
+          },
+          {
+            path: ':title',
+            element: <MoviePage movieList={movieList}/>
+          },
+          {
+            path: 'form',
+            element: <MovieFormPage handleAddMovie={handleAddMovie}/>
           }
         ]
       }
